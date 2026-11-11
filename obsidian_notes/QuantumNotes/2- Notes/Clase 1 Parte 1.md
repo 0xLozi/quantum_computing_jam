@@ -620,6 +620,7 @@ q2 = q2_1 + q2_2
 3. **El rol del Operador:** Dicha matriz justamente es la instrucción que toma un estado cuántico (Ket) y lo transforma en un nuevo estado (otro Ket).
 
 
-Por cierto, yo utilicé `conjugate()` directamente debido a que fisicamente las supuestas "filas" en realidad se almacenan como arreglos unidimensionales. Y debido a eso pues no es necesario hacer de manera "fisica" el acostamiento de la supuesta "columna"
+Por cierto, yo utilicé `conjugate()` directamente debido a que físicamente las supuestas "filas" en realidad se almacenan como arreglos unidimensionales. Y debido a eso pues no es necesario hacer de manera "física" el acostamiento de la supuesta "columna"
 
 Por ende `np.outer(v1, v2)` lo que hace es tomar `v1`, lo asume como una columna, después toma `v2`, lo asume como fila, y entonces se encarga de hacer toda la multiplicación matricial para devolver la matriz de `2 \times 2`.
+En la documentación de IBM, encuentro la clase Operator. Los parámetros a pasar son 2 arreglos:
