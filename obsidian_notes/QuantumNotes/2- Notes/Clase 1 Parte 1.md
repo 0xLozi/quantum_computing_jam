@@ -596,4 +596,25 @@ $\vert{}\psi_0\rangle = \frac{i}{\sqrt{3}}\vert{}0\rangle + \sqrt{\frac{2}{3}}\v
 
 $\vert{}\psi_1\rangle = \frac{2}{\sqrt{5}}\vert{}0\rangle + \frac{i}{\sqrt{5}}\vert{}1\rangle = \begin{bmatrix} \frac{2}{\sqrt{5}} \\ \frac{i}{\sqrt{5}} \end{bmatrix}$
 
-Por lo que vi en qiskit y la teoría, podemos crear los operadores usando Operator y el producto externo usando np.outer de Numpy.
+Por lo que vi en `Qiskit` y la teoría, podemos crear los operadores usando `Operator` y el producto externo usando `np.outer` de `Numpy`.
+
+```python
+#Escriba su código aquí para la parte a
+import numpy as np
+from qiskit.quantum_info import Statevector, Operator
+
+q1_1 = (1j / np.sqrt(3)) * Statevector.from_label("0")
+q1_2 = np.sqrt(2 / 3) * Statevector.from_label("1")
+q1 = q1_1 + q1_2
+
+q2_1 = (2 / np.sqrt(5)) * Statevector.from_label("0")
+q2_2 = (1j / np.sqrt(5)) * Statevector.from_label("1")
+q2 = q2_1 + q2_2
+```
+
+
+**Otra cosa mas a tener en cuenta:** [[Operador En Mecánica Cuántica]]
+**El procedimiento es el siguiente:**
+1. **Obtención del Bra:** Partimos del Ket $\vert{}\psi_1\rangle$ (que sería un vector columna), lo "acostamos" para que sea un vector fila y lo conjugamos (cambiamos el signo a la parte imaginaria). A dicha operación combinada la llamamos **transpuesta conjugada** (o adjunto Hermítico)
+2. **El operador resultante:** Al multiplicar el Ket $\vert{}\psi_0\rangle$ (columna) por el Bra $\langle\psi_1\vert{}$ (fila conjugada), obtenemos una matriz cuadrada.
+3. **El rol del Operador:** Dicha matriz justamente es la instruccion que toma un estado cuántico (Ket) y lo transforma en un nuevo estado (otro Ket).
