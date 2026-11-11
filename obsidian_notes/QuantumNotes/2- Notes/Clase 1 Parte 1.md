@@ -617,4 +617,9 @@ q2 = q2_1 + q2_2
 **El procedimiento es el siguiente:**
 1. **Obtención del Bra:** Partimos del Ket $\vert{}\psi_1\rangle$ (que sería un vector columna), lo "acostamos" para que sea un vector fila y lo conjugamos (cambiamos el signo a la parte imaginaria). A dicha operación combinada la llamamos **transpuesta conjugada** (o adjunto Hermítico)
 2. **El operador resultante:** Al multiplicar el Ket $\vert{}\psi_0\rangle$ (columna) por el Bra $\langle\psi_1\vert{}$ (fila conjugada), obtenemos una matriz cuadrada.
-3. **El rol del Operador:** Dicha matriz justamente es la instruccion que toma un estado cuántico (Ket) y lo transforma en un nuevo estado (otro Ket).
+3. **El rol del Operador:** Dicha matriz justamente es la instrucción que toma un estado cuántico (Ket) y lo transforma en un nuevo estado (otro Ket).
+
+
+Por cierto, yo utilicé `conjugate()` directamente debido a que fisicamente las supuestas "filas" en realidad se almacenan como arreglos unidimensionales. Y debido a eso pues no es necesario hacer de manera "fisica" el acostamiento de la supuesta "columna"
+
+Por ende `np.outer(v1, v2)` lo que hace es tomar `v1`, lo asume como una columna, después toma `v2`, lo asume como fila, y entonces se encarga de hacer toda la multiplicación matricial para devolver la matriz de `2 \times 2`.
