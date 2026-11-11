@@ -511,7 +511,7 @@ Primero que nada hay que recordar qué es una [[Superposición Equiprobable]]. E
 ---
 # Operadores y matrices
 ## Producto externo
-Vimos qué pasa si multiplicamos un [[bra]] por un [[ket]]: obtenemos un braket, o producto interno, que es un número complejo.
+Vimos qué pasa si multiplicamos un [[bra]] por un [[ket]]: obtenemos un [[braket]], o [[producto interno]], que es un número complejo.
 
 Ahora, ¿qué pasa si multiplicamos un ket por un bra? Al multiplicar un vector columna por un vector fila, ambos de $n$ dimensiones, obtendremos una matriz de $n\times n$ dimensiones.
 
