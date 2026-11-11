@@ -399,7 +399,7 @@ print(resultado)
 **Resultado:**
 `(0.7071067811865475+0j)`
 
-**Ejercicio 4:**
+### **Ejercicio 4:**
 Para sacar el producto interno entre dos vectores cumple que $\langle v|w \rangle = \langle w | v \rangle^*$ . Muestra esa propiedad computando $\langle i | - \rangle y \langle - | i \rangle$
 
 Lo que hice fue simplemente hacer al revés, con eso veo que aplicando `inner` al revés (O sea, llamando la función de `inner()` usando el primer estado para el segundo y viceversa) dan lo mismo.
@@ -411,7 +411,7 @@ Lo que hice fue simplemente hacer al revés, con eso veo que aplicando `inner` a
 > 2. Lo multiplica por el ket del segundo vector.
 >    Por eso, al cambiar el orden (`right_sv.inner(minus_sv)` frente a `minus_sv.inner(right_sv)`), el conjugado se aplica automáticamente al nuevo vector que quedó a la izquierda, cumpliendo la regla matemática $\langle v \vert{} w \rangle = \langle w \vert{} v \rangle^*$.
 
-**Ejercicio 5: norma de un ket**
+### **Ejercicio 5: norma de un ket**
 La **norma** de un vector es un número real dado por $|||v\rangle||=\sqrt{\langle v|v\rangle}$. Verifica que la norma del qubit del ejercicio 1 tenga norma unitaria utilizando un método apropiado. Crea el vector columna $|w\rangle=(\sqrt{2},1)=\sqrt{2}|0\rangle+|1\rangle$ y verifica, utilizando el mismo método, que su norma no es unitaria.
 
 En criollo, cuando calculamos $\langle v\vert{}v\rangle$, estamos multiplicando el **bra** del vector por su propio **ket**. Al aplicarle la raíz cuadrada $\sqrt{\dots}$ obtenemos la norma total, que debe dar $1$ exactamente para que el estado sea válido y represente probabilidades reales.
@@ -513,20 +513,76 @@ Primero que nada hay que recordar qué es una [[Superposición Equiprobable]]. E
 
 
 
+---
+# Operadores y matrices
+## Producto externo
+Vimos qué pasa si mutiplicamos un bra por un ket: obtenemos un braket, o producto interno, que es un número complejo.
 
+Ahora, ¿qué pasa si multiplicamos un ket por un bra? Al multiplicar un vector columna por un vector fila, ambos de $n$ dimensiones, obtendremos una matriz de $n\times n$ dimensiones.
 
+Es importante notar que la multiplicación en vectores y matrices no es conmutativa. Multiplicar un vector fila por un vector columna nos da un número, mientras que multiplicar un vector columna por un vector fila nos devuelve una matriz.
 
+Supongamos que tenemos los kets $\left|\psi\right>=\begin{pmatrix}z_1, \ldots, z_n\end{pmatrix}$ y $\left|\phi\right>=(y_1,\ldots,y_n)$. Entonces, definiremos el **producto externo** entre $\left|\psi\right>$ y $\left|\phi\right>$ como la siguiente operación:
 
+$$
+\begin{equation}
+\left|\psi\right>\left<\phi\right|=\begin{bmatrix}z_1\\ \vdots \\ z_n \end{bmatrix}\begin{bmatrix}y_1^* & \cdots & y_n^*\end{bmatrix}=\begin{bmatrix}z_1y_1^* & \cdots & z_1y_n^* \\ \vdots & \ddots & \vdots \\ z_ny_1^* & \cdots & z_ny_n^*\end{bmatrix}
+\end{equation}
+$$
 
+Pueden verificar que el resultado no es el mismo si hacemos $\left|\phi\right>\left<\psi\right|$.
 
+Al aplicarle el producto externo a un ket, obtenemos otro ket. Supongamos que tenemos el producto externo $\left|\psi\right>\left<\phi\right|$ y se lo aplicamos al ket $\left|\pi\right>$. Teniendo en cuenta que el producto interno $\left<\phi|\pi\right>$ es igual a un número complejo $\gamma$, tenemos que:
+$$
+\begin{equation}
+\left(\left|\psi\right>\left<\phi\right|\right)\left|\pi\right>=\left|\psi\right>\left<\phi|\pi\right>=\gamma\left|\psi\right>
+\end{equation}
+$$
 
+**Matricialmente, la operación se escribiría de la siguiente manera:**
+$$
+\begin{equation}
+\left(\left|\psi\right>\left<\phi\right|\right)\left|\pi\right>=\begin{bmatrix} z_1y_1^* & \cdots & z_1y_n^* \\ \vdots & \ddots & \vdots \\ z_ny_1^* & \cdots & z_ny_n^*\end{bmatrix}\begin{bmatrix}\pi_1 \\ \vdots \\ \pi_n \end{bmatrix}=\begin{bmatrix}z_1\sum_{i=1}^n\pi_iy_i^*\\ \vdots \\ z_n\sum_{i=1}^n\pi_iy_i^*\end{bmatrix}=\sum_{i=1}^n\pi_iy_i^*\begin{bmatrix}z_1\\ \vdots \\ z_n\end{bmatrix}
+\end{equation}
+$$
+Donde $\left|\pi\right>=\begin{pmatrix}\pi_1,\ldots ,\pi_n\end{pmatrix}$. Claramente, la notación de Dirac nos ayuda a escribir estas expresiones de una forma mucho más compacta e intuitiva.
 
+En **Python**, podemos computar productos externos entre dos vectores utilizando el método ```.outer()``` de la librería ```Numpy```. Pueden ver la documentación [aquí](https://numpy.org/doc/2.3/reference/generated/numpy.outer.html).
 
+## Conjugado hermítico
+Matricialmente, podemos obtener el **conjugado hermítico** de un operador lineal - también conocido como **operador adjunto** - tomando el conjugado complejo de sus elementos y transponiendo la matriz (o viceversa):
+$$
+\begin{equation}
+A^\dagger=\left(A^*\right)^T=\left(A^T\right)^*
+\end{equation}
+$$
 
+A este punto, ya tenemos todas las herramientas principales de la notación de Dirac: kets, bras, productos internos, productos externos, operadores lineales y sus conjugados hermíticos. Podemos encontrarnos con expresiones compuestas por varios de estos elementos (siempre y cuando la operación matemática tenga sentido), y puede ser muy útil saber cómo obtener el conjugado de esas expresiones. Podemos obtener el conjugado hermítico de expresiones compuestas en notación de Dirac reemplazando las constantes por sus complejos conjugados, los operadores por sus adjuntos, los kets por bras y los bras por kets. Finalmente, invertiremos el orden de los elementos.
 
+A continuación, se muestran algunos ejemplos básicos de expresiones comunes y cómo resolver sus conjugados:
 
-
-
-
-
-
+$$
+\begin{equation}
+\begin{array}{|c|c|}
+\hline
+\textbf{Expresion} & \textbf{Solucion} \\
+\hline
+z^\dagger & z^* \\
+\hline
+|\psi \rangle^\dagger & \langle \psi | \\
+\hline
+\langle\psi|^\dagger & |\psi\rangle \\
+\hline
+\langle \psi |\hat{A}| \phi \rangle^\dagger & \langle\phi|{\hat{A}}^\dagger |\psi\rangle \, \text{ó} \, \langle \psi | \hat{A} |\phi \rangle^* \\
+\hline
+{({\hat{A}}^\dagger)}^\dagger & \hat{A} \\
+\hline
+(\hat{A}\hat{B})^\dagger & \hat{B}^\dagger \hat{A}^\dagger \\
+\hline
+(|\psi\rangle \langle \phi|)^\dagger & |\phi\rangle \langle \psi| \\
+\hline
+(\hat{A} + \hat{B})^\dagger & {\hat{A}}^\dagger + {\hat{B}}^\dagger \\
+\hline
+\end{array}
+\end{equation}
+$$
