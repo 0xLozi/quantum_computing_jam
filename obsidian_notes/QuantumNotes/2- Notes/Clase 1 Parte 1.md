@@ -499,6 +499,11 @@ Por ende cuando a la clase `Statevector([...])` le paso una lista de 8 amplitude
 **Algo que encontré en internet fue que puedo hacer esto:**
 Crear una lista de 8 amplitudes iguales multiplicando una lista de un elemento: `[1 / np.sqrt(8)] * 8`.
 
+#### Ejercicio 6 - Inciso C
+Crea una función para preparar una superposición equiprobable de $N$ estados para $n$ qubits: $\frac{1}{\sqrt{N}}\sum_{i=0}^{N-1}|i\rangle$, donde $N=2^n$.
+
+Primero que nada hay que recordar qué es una [[Superposición Equiprobable]]
+
 
 
 
