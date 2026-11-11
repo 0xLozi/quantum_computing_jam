@@ -496,8 +496,12 @@ Por ende cuando a la clase `Statevector([...])` le paso una lista de 8 amplitude
 - **La ventaja de `Statevector`:** En lugar de hacer la suma manual término por término multiplicando cada label por ($\frac{1}{\sqrt{8}}$), le puedo parar una lista de 8 amplitudes y Qiskit asigna automáticamente cada posición del arreglo a su correspondiente estado de la base computacional.
 - **Superposición uniforme:** Al ponerle a las 8 posiciones la amplitud $\frac{1}{\sqrt{8}}$, logro que todos tengan exactamente un $1/8$ de **probs**.
 
-Algo que encontré en internet fue que puedo hacer esto:
-Crear una lista de 8 amplitudes iguales multiplicando una lista de un elemento: `[1 / np.sqrt(8)] * 8`
+**Algo que encontré en internet fue que puedo hacer esto:**
+Crear una lista de 8 amplitudes iguales multiplicando una lista de un elemento: `[1 / np.sqrt(8)] * 8`.
+
+
+
+
 
 
 

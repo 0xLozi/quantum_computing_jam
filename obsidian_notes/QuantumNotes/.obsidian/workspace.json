@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1- Index/Quantum Computing.md",
+                "file": "2- Notes/Clase 1 Parte 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quantum Computing"
+              "title": "Clase 1 Parte 1"
             }
           }
         ]
@@ -33,7 +33,7 @@
       {
         "id": "1a170bcb801cf32b",
         "type": "tabs",
-        "dimension": 61.943319838056674,
+        "dimension": 61.94331983805668,
         "children": [
           {
             "id": "e58f893817cbeb48",
@@ -101,7 +101,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 320.5
+    "width": 256.16926193237305
   },
   "right": {
     "id": "c9cf7bc49f78b6a1",
@@ -117,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1- Index/Quantum Computing.md",
+                "file": "2- Notes/Clase 1 Parte 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1- Index/Quantum Computing.md",
+                "file": "2- Notes/Clase 1 Parte 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -179,7 +179,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1- Index/Quantum Computing.md",
+                "file": "2- Notes/Clase 1 Parte 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -220,14 +220,17 @@
   },
   "active": "1bbfb332e0a351e6",
   "lastOpenFiles": [
-    "2- Notes/amplitudes de probabilidad.md",
-    "Welcome.md",
     "1- Index/Quantum Computing.md",
     "2- Notes/Clase 1 Parte 1.md",
+    "2- Notes/Clase 1 Quantum.md",
+    "2- Notes/interferencia cuántica.md",
+    "2- Notes/normalizado.md",
+    "2- Notes/Superposición Uniforme.md",
+    "2- Notes/amplitudes de probabilidad.md",
+    "Welcome.md",
     "anotehr hting.md",
     "1- Index",
     "2- Notes",
-    "2- Notes/Clase 1 Quantum.md",
     "3- images/wolfgang-pauli.jpg",
     "3- images/toffoli-gate.png",
     "3- images/teleportation-circuit.jpg",
@@ -239,9 +242,6 @@
     "3- images/schrodinger.jpg",
     "3- images/schrodinger-cat.avif",
     "3- images",
-    "amplitudes de probabilidad 1.md",
-    "2- Notes/Superposición Uniforme.md",
-    "2- Notes/normalizado.md",
-    "2- Notes/interferencia cuántica.md"
+    "amplitudes de probabilidad 1.md"
   ]
 }

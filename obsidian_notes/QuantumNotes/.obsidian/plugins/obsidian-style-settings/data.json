@@ -1,0 +1,11 @@
+{
+  "title@@vibrant": false,
+  "title@@dim-light-mode": false,
+  "title@@enable-mica": false,
+  "title@@hide-sidebar-header": false,
+  "title@@custom-page-header": false,
+  "title@@tab-drag-desktop": false,
+  "title@@no-top-space": true,
+  "title@@button-shapes-mobile": true,
+  "title@@fab-enabled-desktop": true
+}
