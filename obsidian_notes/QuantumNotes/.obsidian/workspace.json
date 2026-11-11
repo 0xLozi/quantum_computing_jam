@@ -203,7 +203,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -217,7 +218,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e58f893817cbeb48",
+  "active": "1bbfb332e0a351e6",
   "lastOpenFiles": [
     "2- Notes/amplitudes de probabilidad.md",
     "Welcome.md",
