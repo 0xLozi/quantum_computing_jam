@@ -662,3 +662,45 @@ Crea los operadores con el método ```.from_label()``` de la clase ```Operator``
 - Los estados de la base computacional: $|0\rangle$ y $|1\rangle$;
 - Los estados de la **base de Hadamard**: $|+\rangle$ y $|-\rangle$;
 - Los estados de la **base circular**: $|i\rangle$ y $|-i\rangle$;
+
+**Resultado:**
+```Plaintext
+──────────────────────────────────────────────────────────── Operador I ──────────────────────────────────────────────────────────── I |0⟩ = [1.+0.j,0.+0.j] I |1⟩ = [0.+0.j,1.+0.j] I |+⟩ = [0.70710678+0.j,0.70710678+0.j] I |-⟩ = [ 0.70710678+0.j,-0.70710678+0.j] I |i⟩ = [0.70710678+0.j ,0. +0.70710678j] I |-i⟩ = [0.70710678+0.j ,0. -0.70710678j] ──────────────────────────────────────────────────────────── Operador X ──────────────────────────────────────────────────────────── X |0⟩ = [0.+0.j,1.+0.j] X |1⟩ = [1.+0.j,0.+0.j] X |+⟩ = [0.70710678+0.j,0.70710678+0.j] X |-⟩ = [-0.70710678+0.j, 0.70710678+0.j] X |i⟩ = [0. +0.70710678j,0.70710678+0.j ] X |-i⟩ = [0. -0.70710678j,0.70710678+0.j ] ──────────────────────────────────────────────────────────── Operador Y ──────────────────────────────────────────────────────────── Y |0⟩ = [0.+0.j,0.+1.j] Y |1⟩ = [0.-1.j,0.+0.j] Y |+⟩ = [0.-0.70710678j,0.+0.70710678j] Y |-⟩ = [0.+0.70710678j,0.+0.70710678j] Y |i⟩ = [0.70710678+0.j ,0. +0.70710678j] Y |-i⟩ = [-0.70710678+0.j , 0. +0.70710678j] ──────────────────────────────────────────────────────────── Operador Z ──────────────────────────────────────────────────────────── Z |0⟩ = [1.+0.j,0.+0.j] Z |1⟩ = [ 0.+0.j,-1.+0.j] Z |+⟩ = [ 0.70710678+0.j,-0.70710678+0.j] Z |-⟩ = [0.70710678+0.j,0.70710678+0.j] Z |i⟩ = [0.70710678+0.j ,0. -0.70710678j] Z |-i⟩ = [0.70710678+0.j ,0. +0.70710678j]
+```
+
+**En el caso del Bloque de I:**
+- $I\vert{}0\rangle = \vert{}0\rangle$
+- $I\vert{}1\rangle = \vert{}1\rangle$
+- $I\vert{}+\rangle = \vert{}+\rangle$
+Su efecto es que no altera el estado, sino que deja a todos los kets exactamente iguales (técnicamente es multiplicar por 1)
+
+**Operador NOT o Bit-Flip (X)**
+- $X\vert{}0\rangle = \begin{bmatrix}0 \\ 1\end{bmatrix} = \vert{}1\rangle$
+- $X\vert{}1\rangle = \begin{bmatrix}1 \\ 0\end{bmatrix} = \vert{}0\rangle$
+Su efecto es que funciona como una compuerta **NOT** clásica, o sea invierte $\vert{}0\rangle \leftrightarrow \vert{}1\rangle$
+
+
+Cuando le aplico a la base de Hadamard ($\vert{}+\rangle$ y $\vert{}-\rangle$):
+- $X\vert{}+\rangle = [0.707, 0.707] = \vert{}+\rangle$
+- $X\vert{}-\rangle = [-0.707, 0.707] = -(\vert{}-\rangle)$ (se mantiene en $\vert{}-\rangle$ salvo por una fase global).
+
+Decimos entonces que los estados $\vert{}+\rangle$ y $\vert{}-\rangle$ son **autovectores** del operador $X$ (o sea no cambian su estado base!).
+
+
+**Operador Phase-Flip ($Z$)**
+Esto es lo que hace Z
+- En la base computacional: Deja igual a $\vert 0 \rangle$, pero a $\vert 1 \rangle$ le cambia el signo a la amplitud ($Z\vert{}1\rangle = -\vert{}1\rangle$).
+- **En la base de Hadamard:**
+	- $Z\vert{}+\rangle = [0.707, -0.707] = \vert{}-\rangle$
+	- $Z\vert{}-\rangle = [0.707, 0.707] = \vert{}+\rangle$
+Su efecto es que se invierte el signo del componente $\vert{}1\rangle$. Por lo tanto, en la base Hadamard intercambia $\vert{}+\rangle \leftrightarrow \vert{}-\rangle$.
+
+**Operador $Y$ (Bit-Flip + Phase-Flip)**
+El operador $Y$ combina ambos efectos (invierte $\vert{}0\rangle \leftrightarrow \vert{}1\rangle$ y además agrega un factor complejo $i$).
+
+**Lo que sucede:**
+- $Y\vert{}i\rangle = \vert{}i\rangle$
+- $Y\vert{}-i\rangle = -\vert{}-i\rangle$
+Los estados $\vert{}i\rangle$ y $\vert{}-i\rangle$ son los [[autovectores]] del operador $Y$!!!!
+
+### Ejercicio 10
