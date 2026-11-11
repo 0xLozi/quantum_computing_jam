@@ -582,7 +582,7 @@ z^\dagger & z^* \\
 \end{equation}
 $$
 
-### Ejercicio 8: no conmutatividad y traza de un operador
+### Ejercicio 8: no conmutatividadK y traza de un operador
 a. Sean $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y $|\psi_1\rangle=\frac{2}{\sqrt{5}}|0\rangle+\frac{i}{\sqrt{5}}|1\rangle$. Crea los operadores $\hat{A}_0=|\psi_0\rangle\langle\psi_1|$ y $\hat{A}_1=|\psi_1\rangle\langle\psi_0|$ y verifica que $\hat{A}_0\neq\hat{A}_1$.
 
 b. Aplica los operadores al estado $|-i\rangle$.
@@ -624,3 +624,41 @@ Por cierto, yo utilicé `conjugate()` directamente debido a que físicamente las
 
 Por ende `np.outer(v1, v2)` lo que hace es tomar `v1`, lo asume como una columna, después toma `v2`, lo asume como fila, y entonces se encarga de hacer toda la multiplicación matricial para devolver la matriz de `2 \times 2`.
 En la documentación de IBM, encuentro la clase Operator. Los parámetros a pasar son 2 arreglos:
+
+**Ejercicio c**
+Algo interesante que noté sobre este ejercicio es que literal al ver los traces de ambos operadores, lo único que cambia de estos mismos es su signo!!!
+```shell
+Trace de A1 0.1512494078242116j 
+Trace de A2 -0.1512494078242116j
+```
+
+Ah y esto es lo adicional que tuve que agregar al código original para poder resolver el ejercicio c:
+```shell
+print("Como podemos accdeder a la matriz del Operador con .data (lo dice en la documentación), entonces haremos np.outer y le pasamos dicha matriz")
+
+print("Trace de A1", np.trace(A_q1.data))
+print("Trace de A2", np.trace(A_q2.data))
+```
+
+Como sé que en la documentación de IBM aparece el atributo `.data` para `Operator`, puedo simplemente usar ese para acceder a su matriz.
+
+
+### Ejercicio 9: las matrices de Pauli
+A continuación, se muestran las representaciones matriciales (con respecto a la base computacional) de los **operadores de Pauli**, los cuales son muy importantes en la computación cuántica:
+  
+$$
+\begin{equation}
+I=\begin{bmatrix}1 & 0\\ 0 & 1\end{bmatrix}
+\qquad
+X=\begin{bmatrix}0 & 1\\ 1 & 0\end{bmatrix}
+\qquad
+Y=\begin{bmatrix}0 & -i\\ i & 0\end{bmatrix}
+\qquad
+Z=\begin{bmatrix}1 & 0\\ 0 & -1\end{bmatrix}
+\end{equation}
+$$
+
+Crea los operadores con el método ```.from_label()``` de la clase ```Operator```. Luego, observa el efecto que tienen al aplicarlos a:
+- Los estados de la base computacional: $|0\rangle$ y $|1\rangle$;
+- Los estados de la **base de Hadamard**: $|+\rangle$ y $|-\rangle$;
+- Los estados de la **base circular**: $|i\rangle$ y $|-i\rangle$;
