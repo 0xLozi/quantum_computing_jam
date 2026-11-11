@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "anotehr hting.md",
+                "file": "1- Index/Quantum Computing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "anotehr hting"
+              "title": "Quantum Computing"
             }
           }
         ]
@@ -117,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "anotehr hting.md",
+                "file": "1- Index/Quantum Computing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "anotehr hting.md",
+                "file": "1- Index/Quantum Computing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -179,7 +179,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "anotehr hting.md",
+                "file": "1- Index/Quantum Computing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -217,9 +217,30 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d006cad5e1ad5001",
+  "active": "e58f893817cbeb48",
   "lastOpenFiles": [
+    "2- Notes/amplitudes de probabilidad.md",
     "Welcome.md",
-    "anotehr hting.md"
+    "1- Index/Quantum Computing.md",
+    "2- Notes/Clase 1 Parte 1.md",
+    "anotehr hting.md",
+    "1- Index",
+    "2- Notes",
+    "2- Notes/Clase 1 Quantum.md",
+    "3- images/wolfgang-pauli.jpg",
+    "3- images/toffoli-gate.png",
+    "3- images/teleportation-circuit.jpg",
+    "3- images/swap-gate.png",
+    "3- images/superdense-coding-circuit.png",
+    "3- images/single-qubit-gates.webp",
+    "3- images/simon-algorithm-circuit.webp",
+    "3- images/shor-algorithm.jpg",
+    "3- images/schrodinger.jpg",
+    "3- images/schrodinger-cat.avif",
+    "3- images",
+    "amplitudes de probabilidad 1.md",
+    "2- Notes/Superposición Uniforme.md",
+    "2- Notes/normalizado.md",
+    "2- Notes/interferencia cuántica.md"
   ]
 }
