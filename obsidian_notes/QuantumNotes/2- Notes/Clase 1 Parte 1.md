@@ -502,7 +502,12 @@ Crear una lista de 8 amplitudes iguales multiplicando una lista de un elemento: 
 #### Ejercicio 6 - Inciso C
 Crea una función para preparar una superposición equiprobable de $N$ estados para $n$ qubits: $\frac{1}{\sqrt{N}}\sum_{i=0}^{N-1}|i\rangle$, donde $N=2^n$.
 
-Primero que nada hay que recordar qué es una [[Superposición Equiprobable]]
+Primero que nada hay que recordar qué es una [[Superposición Equiprobable]]. Estos son los puntos importantes que hay que tener en cuenta:
+- Para n qubits, tenemos N = 2^n estados posibles en la base computacional.
+- La probabilidad de cada uno es $P = \frac{1}{N}$.
+- La amplitud de cada uno es amplitud = $\sqrt{P} = \frac{1}{\sqrt{N}}$
+
+
 
 
 
