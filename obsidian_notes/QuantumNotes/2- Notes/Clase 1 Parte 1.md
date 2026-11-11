@@ -581,3 +581,19 @@ z^\dagger & z^* \\
 \end{array}
 \end{equation}
 $$
+
+### Ejercicio 8: no conmutatividad y traza de un operador
+a. Sean $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y $|\psi_1\rangle=\frac{2}{\sqrt{5}}|0\rangle+\frac{i}{\sqrt{5}}|1\rangle$. Crea los operadores $\hat{A}_0=|\psi_0\rangle\langle\psi_1|$ y $\hat{A}_1=|\psi_1\rangle\langle\psi_0|$ y verifica que $\hat{A}_0\neq\hat{A}_1$.
+
+b. Aplica los operadores al estado $|-i\rangle$.
+
+c. La **traza** de una matriz $A$ se obtiene sumando todos los elementos de su diagonal: $\text{tr}(A)=\sum_ka_{kk}$. En notación de Dirac, la traza de un operador lineal se obtiene de la siguiente manera: $\text{tr}(\hat{A})=\sum_k\langle k|\hat{A}|k\rangle$, donde $\left\{|k\rangle\right\}_{k=0}^n$ es una base ortonormal. Obtén la traza de los operadores $\hat{A}_0$ y $\hat{A}_1$.
+
+
+**Inciso A**
+Primero hay que definir los dos vectores de estado:
+$\vert{}\psi_0\rangle = \frac{i}{\sqrt{3}}\vert{}0\rangle + \sqrt{\frac{2}{3}}\vert{}1\rangle = \begin{bmatrix} \frac{i}{\sqrt{3}} \\ \sqrt{\frac{2}{3}} \end{bmatrix}$
+
+$\vert{}\psi_1\rangle = \frac{2}{\sqrt{5}}\vert{}0\rangle + \frac{i}{\sqrt{5}}\vert{}1\rangle = \begin{bmatrix} \frac{2}{\sqrt{5}} \\ \frac{i}{\sqrt{5}} \end{bmatrix}$
+
+Por lo que vi en qiskit y la teoría, podemos crear los operadores usando Operator y el producto externo usando np.outer de Numpy.
