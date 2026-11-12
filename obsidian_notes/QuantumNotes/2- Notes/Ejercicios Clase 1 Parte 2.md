@@ -306,7 +306,7 @@ for name, A in ops.items():
 ```
 
 **Expliquemos un poco sobre este código:**
-- `np.linalg.eig` es una función integrada de `NumPy` que está diseñada para calcular automáticamente los autovalores y autovectores de cualquier matriz numérica. Lo cual es un golazo para nosotros.
+- `np.linalg.eig` es una función integrada de `NumPy` que está diseñada para calcular automáticamente los autovalores y autovectores de cualquier matriz numérica. Lo cual creo que nos va a servir bastante.
 
 - `aval` y `avec`: Serían nombres de variables abreviados para mayor comodidad:
 	- `aval`: **avalores** (los autovalores $\lambda$)
@@ -326,3 +326,45 @@ $$
 \end{equation}
 $$
 Obtén los valores esperados de los operadores de Pauli y la compuerta de Hadamard (ver los ejercicios 9 y 10) para los estados $|0\rangle$, $|1\rangle$, $|+\rangle$, $|-\rangle$, $|i\rangle$ y $|-i\rangle$.
+
+**Ahora si... El resultado en cuestión:**
+```python
+ops = {
+    "I": Operator.from_label("I"),
+    "X": Operator.from_label("X"),
+    "Y": Operator.from_label("Y"),
+    "Z": Operator.from_label("Z"),
+}
+
+def desc_espectral(A: Operator):
+
+    """Devuelve (A_espec, aval, avec) donde A_espec = sum_i λ_i |φ_i><φ_i|."""
+
+    M = A.data
+
+    # Obtengo autovalores y autovectores de la matriz M
+    aval, avec = np.linalg.eig(M)
+
+    # Reconstruyo el operador a partir de sus autovalores y autovectores
+    A_espec = np.zeros_like(M, dtype=complex)
+    for k in range(len(aval)):
+        v = avec[:, k]
+        # Normalizo:
+        v = v / np.linalg.norm(v)
+        # Armo la suma espectral
+        A_espec += aval[k] * np.outer(v, v.conj())
+    return A_espec, aval, avec
+
+for name, A in ops.items():
+    A_espec, aval, avec = desc_espectral(A)
+
+    # Devuelve True si la descomposición espectral es equivalente a la matriz
+    desc_espectral_ok = np.allclose(A_espec, A.data, atol=1e-12)
+    print(f"\n=== {name} ===")
+    print("Matriz original:\n", A.data)
+    print("Autovalores:\n", aval)
+    print("Autovectores:\n", avec)
+    print("Reconstrucción espectral:\n", A_espec)
+```
+
+### Ejercicio 15: 
