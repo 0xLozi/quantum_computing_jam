@@ -367,4 +367,16 @@ for name, A in ops.items():
     print("Reconstrucción espectral:\n", A_espec)
 ```
 
-### Ejercicio 15: 
+### Ejercicio 15: midiendo qubits
+Aplica la compuerta de Hadamard, $\hat{H}$, al estado $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y muestra en la terminal el estado $|\psi_0'\rangle=\hat{H}|\psi_0\rangle$ (este estado ya está normalizado, por lo que es un qubit válido). Observa el cambio de probabilidades de obtener cada estado de la base computacional al medir $|\psi_0'\rangle$.
+
+
+#### Algo a tener en cuenta
+La compuerta de Hadamard ($\hat{H}$), según lo que investigué, es una operación cuántica que actúa sobre un qubit. Su función principal sería la de actuar como un puente que convierte estados definidos en superposiciones y viceversa.
+
+Funciona como la herramienta la cual genera los estados de la base de Hadamard:
+- Si le aplico $\hat{H}$ al estado $\vert{}0\rangle$, el resultado es el estado de superposición $\vert{}+\rangle$
+- Si le aplico al estado $\vert{}1\rangle$, obtengo $\vert{}-\rangle$.
+
+Lo que hace es rotar el vector de estado en la esfera de Bloch, cambiando la perspectiva o la "base" desde la cual medimos el sistema.
+
