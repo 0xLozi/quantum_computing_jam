@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2- Notes/Explicación más sencilla sobre Proyectores.md",
+                "file": "2- Notes/Clase 1 Parte 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Explicación más sencilla sobre Proyectores"
+              "title": "Clase 1 Parte 1"
             }
           }
         ],
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "operador",
+                "query": "bra",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,7 +95,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "f8513ceff4ae7949",
@@ -235,14 +236,15 @@
   },
   "active": "4c5605f00503074d",
   "lastOpenFiles": [
+    "2- Notes/braket.md",
+    "2- Notes/bra.md",
+    "2- Notes/Clase 1 Parte 1.md",
+    "2- Notes/Explicación más sencilla sobre Proyectores.md",
+    "2- Notes/np.outer().md",
     "1- Index/Quantum Computing.md",
     "2- Notes/Ejercicios Clase 1 Parte 2.md",
     "2- Notes/Clase 1 Parte 2.md",
-    "2- Notes/Explicación más sencilla sobre Proyectores.md",
     "2- Notes/producto externo.md",
-    "2- Notes/Clase 1 Parte 1.md",
-    "2- Notes/braket.md",
-    "2- Notes/bra.md",
     "2- Notes/producto interno.md",
     "2- Notes/Determinante.md",
     "2- Notes/ket.md",

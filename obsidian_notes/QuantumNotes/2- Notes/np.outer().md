@@ -1,0 +1,2 @@
+Calcula el producto externo entre dos vectores
+Cuando le pasas un vector [[ket]] como primer argumento y el vector [[bra]] conjugado como segundo argumento, `np.outer()` toma esos vectores de una dimensión y realiza la multiplicación matricial para transformarlos en una **matriz** bidimensional. 
