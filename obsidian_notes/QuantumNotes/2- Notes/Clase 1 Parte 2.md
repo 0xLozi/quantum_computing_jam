@@ -1,4 +1,11 @@
+# Ejercicios
+Si quiere ver los ejercicios realizados por relacionada al notebook Clase 1 Parte 2 con sus respectivos justificativos, acá se encuentra la nota:
+- [[Ejercicios Clase 1 Parte 2]]
+
+
 # Mediciones y observables
+
+
 ## Operadores hermíticos
 Los **operadores hermíticos** son operadores lineales cuyo conjugado hermítico es igual al mismo operador; es decir, se cumple que ${\hat{A}}^\dagger=\hat{A}$. Si tomamos su representación matricial $A$, vemos que se cumplen dos importantes propiedades (sin importar la base que elijamos para construir la matriz):
 
@@ -35,7 +42,7 @@ $$
 \hat{P}_m=\sum_{i=1}^m|\phi_i\rangle\langle\phi_i|
 \end{equation}
 $$
-
+[[Explicación más sencilla sobre Proyectores]]
 ## Mediciones
 Cada par de autovalor y autovector de un operador hermítico cumple la famosa ecuación de autovalores y autovectores:
 
