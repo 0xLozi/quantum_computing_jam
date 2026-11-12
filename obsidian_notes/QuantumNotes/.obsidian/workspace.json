@@ -8,21 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1bbfb332e0a351e6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2- Notes/Clase 1 Parte 2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Clase 1 Parte 2"
-            }
-          },
-          {
-            "id": "801a7270a8de9f31",
+            "id": "b31dc9b5f92ce132",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,7 +22,7 @@
             }
           },
           {
-            "id": "b31dc9b5f92ce132",
+            "id": "4c5605f00503074d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -47,20 +33,6 @@
               },
               "icon": "lucide-file",
               "title": "Explicación más sencilla sobre Proyectores"
-            }
-          },
-          {
-            "id": "feab15b39fd913fd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2- Notes/producto externo.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "producto externo"
             }
           }
         ],
@@ -99,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "operador",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -261,22 +233,22 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "801a7270a8de9f31",
+  "active": "4c5605f00503074d",
   "lastOpenFiles": [
+    "1- Index/Quantum Computing.md",
     "2- Notes/Ejercicios Clase 1 Parte 2.md",
     "2- Notes/Clase 1 Parte 2.md",
-    "1- Index/Quantum Computing.md",
-    "2- Notes/Clase 1 Parte 1.md",
     "2- Notes/Explicación más sencilla sobre Proyectores.md",
     "2- Notes/producto externo.md",
+    "2- Notes/Clase 1 Parte 1.md",
+    "2- Notes/braket.md",
+    "2- Notes/bra.md",
     "2- Notes/producto interno.md",
     "2- Notes/Determinante.md",
     "2- Notes/ket.md",
-    "2- Notes/braket.md",
     "2- Notes/autovectores.md",
     "2- Notes/Operador En Mecánica Cuántica.md",
     "2- Notes/Untitled.md",
-    "2- Notes/bra.md",
     "2- Notes/Superposición Equiprobable.md",
     "2- Notes/Clase 1 Quantum.md",
     "2- Notes/interferencia cuántica.md",

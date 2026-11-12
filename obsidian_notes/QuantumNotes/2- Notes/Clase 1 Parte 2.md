@@ -4,8 +4,6 @@ Si quiere ver los ejercicios realizados por relacionada al notebook Clase 1 Part
 
 
 # Mediciones y observables
-
-
 ## Operadores hermíticos
 Los **operadores hermíticos** son operadores lineales cuyo conjugado hermítico es igual al mismo operador; es decir, se cumple que ${\hat{A}}^\dagger=\hat{A}$. Si tomamos su representación matricial $A$, vemos que se cumplen dos importantes propiedades (sin importar la base que elijamos para construir la matriz):
 
