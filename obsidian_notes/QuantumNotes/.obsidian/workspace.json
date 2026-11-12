@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "56221f49279f2e24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2- Notes/Clase 1 Parte 2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Clase 1 Parte 2"
+            }
+          },
+          {
             "id": "38f918ad402cc2ba",
             "type": "leaf",
             "state": {
@@ -115,7 +129,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.16926193237305
+    "width": 256.16926193237305,
+    "collapsed": true
   },
   "right": {
     "id": "c9cf7bc49f78b6a1",
@@ -234,16 +249,17 @@
   },
   "active": "1bbfb332e0a351e6",
   "lastOpenFiles": [
-    "2- Notes/autovectores.md",
+    "2- Notes/ket.md",
     "2- Notes/Clase 1 Parte 1.md",
-    "2- Notes/Operador En Mecánica Cuántica.md",
-    "2- Notes/Untitled.md",
+    "2- Notes/Clase 1 Parte 2.md",
     "2- Notes/producto interno.md",
     "2- Notes/braket.md",
-    "2- Notes/ket.md",
+    "1- Index/Quantum Computing.md",
+    "2- Notes/autovectores.md",
+    "2- Notes/Operador En Mecánica Cuántica.md",
+    "2- Notes/Untitled.md",
     "2- Notes/bra.md",
     "2- Notes/Superposición Equiprobable.md",
-    "1- Index/Quantum Computing.md",
     "2- Notes/Clase 1 Quantum.md",
     "2- Notes/interferencia cuántica.md",
     "2- Notes/normalizado.md",
