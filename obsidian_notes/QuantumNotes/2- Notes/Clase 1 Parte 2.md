@@ -2,7 +2,7 @@
 ## Operadores hermíticos
 Los **operadores hermíticos** son operadores lineales cuyo conjugado hermítico es igual al mismo operador; es decir, se cumple que ${\hat{A}}^\dagger=\hat{A}$. Si tomamos su representación matricial $A$, vemos que se cumplen dos importantes propiedades (sin importar la base que elijamos para construir la matriz):
 
-- *Sus autovalores son reales.* Recordemos que los autovalores $\lambda_i$ de una matriz se obtienen resolviendo la ecuación $\left|A-\lambda I\right|=0$, donde $I$ es la matriz identidad.
+- *Sus autovalores son reales.* Recordemos que los autovalores $\lambda_i$ de una matriz se obtienen resolviendo la ecuación $\left|A-\lambda I\right|=0$, donde $I$ es la matriz identidad. ([[Determinante]])
 
 - *Sus autovectores son ortogonales entre sí.* Podemos obtener el autovector $|\phi_i\rangle$ asociado a cada autovalor $\lambda_i$ resolviendo la ecuación matricial $\left(A-\lambda_iI\right)|\phi_i\rangle=\vec{0}$.
 
