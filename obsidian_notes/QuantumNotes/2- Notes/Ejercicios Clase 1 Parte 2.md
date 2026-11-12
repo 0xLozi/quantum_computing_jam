@@ -93,8 +93,93 @@ Esta expresión se denomina **condición de clausura**. Cada término de la suma
 Teniendo esto en cuenta, obtén el operador identidad a partir de las bases $\left\{|0\rangle,|1\rangle\right\}$, $\left\{|+\rangle,|-\rangle\right\}$ y $\left\{|i\rangle,|-i\rangle\right\}$.
 
 **Respuesta:**
+**Caso: $\left\{|0\rangle,|1\rangle\right\}$** 
+```python
+# Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+zero_sv = Statevector.from_label("0")
+one_sv = Statevector.from_label("1")
+
+pe_zero = np.outer(zero_sv, zero_sv.conjugate())
+pe_one = np.outer(one_sv, one_sv.conjugate())
+
+resultado = pe_zero + pe_one
+
+print(resultado)
+```
+Con esto, vemos que efectivamente el resultado es la matriz de identidad!!!!
+
+```plaintext
+[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
+```
+
+Con el resto:
+```python
+# Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+zero_sv = Statevector.from_label("0")
+one_sv = Statevector.from_label("1")
+
+pe_zero = np.outer(zero_sv, zero_sv.conjugate())
+pe_one = np.outer(one_sv, one_sv.conjugate())
+
+resultado = pe_zero + pe_one
+
+print("Caso sumando proyector de zero y one")
+print(resultado)
+
+print("Caso plus y minus")
+plus_sv = Statevector.from_label("+")
+minus_sv = Statevector.from_label("-")
+
+pe_plus = np.outer(plus_sv, plus_sv.conjugate())
+pe_minus = np.outer(minus_sv, minus_sv.conjugate())
+
+resultado = pe_plus + pe_minus
+print(resultado)
+
+print ("Caso i y -i")
+r_sv = Statevector.from_label("r")
+l_sv = Statevector.from_label("l")
+
+pe_r = np.outer(r_sv, r_sv.conjugate())
+pe_l = np.outer(l_sv, l_sv.conjugate())
+
+resultado = pe_r + pe_l
+print(resultado)
+```
+
+**Resultado:** 
+```plaintext
+Caso sumando proyector de zero y one
+[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
+Caso plus y minus
+[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
+Caso i y -i
+[[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
+```
 
 
 
+## Ejercicio 13: teorema de descomposición cerebral
+Podemos obtener los autovalores $\lambda_i$ y sus autovectores asociados $|\phi_i\rangle$ de un operador lineal $\hat{A}$. Cada par cumplirá con la ecuación $\hat{A}|\phi_i\rangle=\lambda_i|\phi_i\rangle$.
+
+El **teorema de descomposición espectral** dice que podemos expresar al operador lineal de la siguiente manera:
+
+$$
+\begin{equation}
+\hat{A}=\sum_i\lambda_i|\phi_i\rangle\langle\phi_i|
+\end{equation}
+$$
+
+Verifica que se cumple el teorema de descomposición espectral para los operadores de Pauli (ver el ejercicio 9), obteniendo los autovectores y autovalores de sus representaciones matriciales.
 
 
