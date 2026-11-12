@@ -101,8 +101,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.16926193237305,
-    "collapsed": true
+    "width": 256.16926193237305
   },
   "right": {
     "id": "c9cf7bc49f78b6a1",
@@ -222,11 +221,11 @@
   "active": "1bbfb332e0a351e6",
   "lastOpenFiles": [
     "1- Index/Quantum Computing.md",
+    "2- Notes/Clase 1 Parte 2.md",
+    "2- Notes/producto interno.md",
     "2- Notes/Clase 1 Parte 1.md",
     "2- Notes/Determinante.md",
-    "2- Notes/Clase 1 Parte 2.md",
     "2- Notes/ket.md",
-    "2- Notes/producto interno.md",
     "2- Notes/braket.md",
     "2- Notes/autovectores.md",
     "2- Notes/Operador En Mecánica Cuántica.md",
