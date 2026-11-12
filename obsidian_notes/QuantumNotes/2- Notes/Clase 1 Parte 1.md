@@ -582,7 +582,7 @@ z^\dagger & z^* \\
 \end{equation}
 $$
 
-### Ejercicio 8: no conmutatividadK y traza de un operador
+### Ejercicio 8: no conmutatividad K y traza de un operador
 a. Sean $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y $|\psi_1\rangle=\frac{2}{\sqrt{5}}|0\rangle+\frac{i}{\sqrt{5}}|1\rangle$. Crea los operadores $\hat{A}_0=|\psi_0\rangle\langle\psi_1|$ y $\hat{A}_1=|\psi_1\rangle\langle\psi_0|$ y verifica que $\hat{A}_0\neq\hat{A}_1$.
 
 b. Aplica los operadores al estado $|-i\rangle$.
@@ -703,4 +703,68 @@ El operador $Y$ combina ambos efectos (invierte $\vert{}0\rangle \leftrightarrow
 - $Y\vert{}-i\rangle = -\vert{}-i\rangle$
 Los estados $\vert{}i\rangle$ y $\vert{}-i\rangle$ son los [[autovectores]] del operador $Y$!!!!
 
-### Ejercicio 10
+### Ejercicio 10: Compuerta de Hadamard
+La **compuerta de Hadamard** es una compuerta cuántica muy importante. Se expresa a través de un operador lineal, cuya representación matricial en la base computacional es:
+
+$$
+\begin{equation}
+H=\frac{1}{\sqrt{2}}\begin{bmatrix}1 & 1\\ 1 & -1\end{bmatrix}
+\end{equation}
+$$
+Aplica este operador a los estados $|0\rangle$, $|1\rangle$, $|+\rangle$ y $|-\rangle$. Observa el resultado.
+
+**Código:**
+```python
+#Escriba su solución aquí
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
+
+zero_sv = Statevector.from_label("0")
+one_sv = Statevector.from_label("1")
+plus_sv = Statevector.from_label("+")
+minus_sv = Statevector.from_label("-")
+
+H = Operator.from_label("H")
+
+svs = {
+	"0": zero_sv,
+	"1": one_sv,
+	"+": plus_sv,
+	"-": minus_sv,
+}
+
+for key, value in svs.items():
+	res = value.evolve(H)
+	print(f"{key} = {res.draw('text')}")
+```
+
+**Resultado:**
+```Plaintext
+0 = [0.70710678+0.j,0.70710678+0.j] 
+1 = [ 0.70710678+0.j,-0.70710678+0.j] 
++ = [1.+0.j,0.+0.j] 
+- = [0.+0.j,1.+0.j]
+```
+
+**Lo que noto yo:**
+- Al aplicar $H$ a $\vert 0 \rangle$, obtengo `[0.7071, 0.7071]`, lo cual es exactamente el estado $\vert + \rangle$.
+- Al aplicar $H$ a $\vert 1 \rangle$, obtengo `[0.7071, -0.7071]`, lo cual es exactamente el estado $\vert - \rangle$.
+- Al aplicar $H$ a $\vert + \rangle$, obtengo `[1.0, 0.0]`, lo cual seria que vuelve al estado $\vert 0 \rangle$.
+- Al aplicar $H$ a $\vert - \rangle$, obtengo `[0.0, 1.0]`, lo cual seria que vuelve al estado $\vert 1 \rangle$.
+
+Wow para, bastante interesante esto, no s
+Según lo que investigué la compuerta de Hadamard ($H$) actúa como un puente o traductor entree dos mundos (dos bases):
+1. La **base computacional** ($\{\vert{}0\rangle, \vert{}1\rangle\}$).
+2. La **base de Hadamard** ($\{\vert{}+\rangle, \vert{}-\rangle\}$).
+
+Entonces al aplicar $H$ a un estado de un "mundo", lo transformo literal exactamente en el estado correspondiente del "otro mundo" :
+- $H\vert{}0\rangle = \vert{}+\rangle$
+- $H\vert{}1\rangle = \vert{}-\rangle$
+- $H\vert{}+\rangle = \vert{}0\rangle$
+- $H\vert{}-\rangle = \vert{}1\rangle$
+
+
+
+
+
+
