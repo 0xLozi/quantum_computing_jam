@@ -380,3 +380,15 @@ Funciona como la herramienta la cual genera los estados de la base de Hadamard:
 
 Lo que hace es rotar el vector de estado en la esfera de Bloch, cambiando la perspectiva o la "base" desde la cual medimos el sistema.
 
+```python
+# Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+zeros_ones = Statevector([1j/np.sqrt(3), np.sqrt(2/3)])
+print("Estas son las probabilidades antes de la aplicación de la compuerta {}", zeros_ones.probabilities_dict())
+
+zeros_ones_H = zeros_ones.evolve(Operator.from_label("H"))
+print("Probabilidades nuevas: {}", zeros_ones_H.probabilities_dict())
+```
+
