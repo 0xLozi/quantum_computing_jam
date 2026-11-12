@@ -182,4 +182,77 @@ $$
 
 Verifica que se cumple el teorema de descomposición espectral para los operadores de Pauli (ver el ejercicio 9), obteniendo los autovectores y autovalores de sus representaciones matriciales.
 
+Por lo que vi ahora es verdadero para el caso de X:
+```python
+# Escriba su solución aquí
+from qiskit.quantum_info import Operator
+from qiskit.quantum_info import Statevector
 
+X = Operator.from_label('X').data
+
+minus_sv = Statevector.from_label("-")
+pe_minus = np.outer(minus_sv, minus_sv.conjugate())
+
+plus_sv = Statevector.from_label("+")
+pe_plus = np.outer(plus_sv, plus_sv.conjugate())
+
+expected = 1 * (pe_plus) + (-1) * (pe_minus)
+
+print("Usando teorema de descomposición espectral")
+print(expected)
+
+print("Operador original")
+print(X)
+```
+**Resultado:**
+```plaintext
+Usando teorema de descomposición espectral
+[[0.+0.j 1.+0.j]
+ [1.+0.j 0.+0.j]]
+Operador original
+[[0.+0.j 1.+0.j]
+ [1.+0.j 0.+0.j]]
+```
+
+Efectivamente, dan lo mismo. Sin embargo tengo que hacer esto para todos los operadores restantes... Así que opté por revisar la solución y ver la opción mas eficiente, la cual es esta:
+```python
+# Escriba su solución aquí
+I = Operator.from_label('I')
+X = Operator.from_label('X')
+Y = Operator.from_label('Y')
+Z = Operator.from_label('Z')
+
+q0 = Statevector.from_label("0")
+q1 = Statevector.from_label("1")
+
+q_plus = Statevector.from_label("+")
+q_minus = Statevector.from_label("-")
+right_sv = Statevector.from_label('r')
+left_sv = Statevector.from_label('l')
+
+
+ops = {
+    "I": I,
+    "X": X,
+    "Y": Y,
+    "Z": Z,
+}
+
+svs = {
+    "0": q0,
+    "1": q1,
+    "+": q_plus,
+    "-": q_minus,
+    "i": right_sv,
+    "-i": left_sv,
+}
+
+for sv_name, sv in svs.items():
+    print(f"Estado {sv_name}:")
+    for op_name, op in ops.items():
+        ev = sv.expectation_value(op)
+        print(f"⟨{op_name}⟩ = {ev}")
+    print("\n")
+```
+
+[[expectation value|Explicación sobre expectation_value en StateVector]]

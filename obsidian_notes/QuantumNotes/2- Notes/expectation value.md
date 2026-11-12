@@ -1,0 +1,1 @@
+El valor esperado $\langle \hat{O} \rangle$ es la herramienta matemática para calcular el promedio
