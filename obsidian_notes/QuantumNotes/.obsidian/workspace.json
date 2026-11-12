@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2- Notes/expectation value.md",
+                "file": "2- Notes/autovectores.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "expectation value"
+              "title": "autovectores"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -116,7 +115,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.16926193237305
+    "width": 256.16926193237305,
+    "collapsed": true
   },
   "right": {
     "id": "c9cf7bc49f78b6a1",
@@ -233,13 +233,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "08ffdf84e378a3e0",
+  "active": "b31dc9b5f92ce132",
   "lastOpenFiles": [
+    "2- Notes/autovectores.md",
     "2- Notes/expectation value.md",
     "2- Notes/Ejercicios Clase 1 Parte 2.md",
     "2- Notes/Clase 1 Parte 2.md",
     "1- Index/Quantum Computing.md",
-    "2- Notes/autovectores.md",
     "2- Notes/producto interno.md",
     "2- Notes/braket.md",
     "2- Notes/ortonormal.md",

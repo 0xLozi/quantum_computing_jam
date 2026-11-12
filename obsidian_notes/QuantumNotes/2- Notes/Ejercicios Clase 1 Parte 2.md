@@ -256,3 +256,73 @@ for sv_name, sv in svs.items():
 ```
 
 [[expectation value|Explicación sobre expectation_value en StateVector]]
+
+#### Me confundi
+Puse el resultado del 14 en el 13... Bueno... Lo bueno es que van de la mano sinceramente: 
+- Cuando el estado es un autovctor del operador, el valor esperado coincide exactametne con el autovalor (1)
+- Cuando el estado está en una superposición equitativa respecto a ese operador, el resultado es 0
+
+Bueno, en realidad esta sería la solución al 13, aunque igualmente no está mal la implementación de arriba... Pero en realidad esa debe ir en la 14
+
+```python
+# Escriba su solución aquí
+
+ops = {
+    "I": Operator.from_label("I"),
+    "X": Operator.from_label("X"),
+    "Y": Operator.from_label("Y"),
+    "Z": Operator.from_label("Z"),
+}
+
+def desc_espectral(A: Operator):
+
+    """Devuelve (A_espec, aval, avec) donde A_espec = sum_i λ_i |φ_i><φ_i|."""
+
+    M = A.data
+
+    # Obtengo autovalores y autovectores de la matriz M
+    aval, avec = np.linalg.eig(M)
+
+    # Reconstruyo el operador a partir de sus autovalores y autovectores
+    A_espec = np.zeros_like(M, dtype=complex)
+    for k in range(len(aval)):
+        v = avec[:, k]
+        # Normalizo:
+        v = v / np.linalg.norm(v)
+        # Armo la suma espectral
+        A_espec += aval[k] * np.outer(v, v.conj())
+    return A_espec, aval, avec
+
+for name, A in ops.items():
+    A_espec, aval, avec = desc_espectral(A)
+
+    # Devuelve True si la descomposición espectral es equivalente a la matriz
+    desc_espectral_ok = np.allclose(A_espec, A.data, atol=1e-12)
+    print(f"\n=== {name} ===")
+    print("Matriz original:\n", A.data)
+    print("Autovalores:\n", aval)
+    print("Autovectores:\n", avec)
+    print("Reconstrucción espectral:\n", A_espec)
+```
+
+**Expliquemos un poco sobre este código:**
+- `np.linalg.eig` es una función integrada de `NumPy` que está diseñada para calcular automáticamente los autovalores y autovectores de cualquier matriz numérica. Lo cual es un golazo para nosotros.
+
+- `aval` y `avec`: Serían nombres de variables abreviados para mayor comodidad:
+	- `aval`: **avalores** (los autovalores $\lambda$)
+	- `avec`: **avectores** (o sea las columnas con los autovectores $\vert{}\phi\rangle$)
+
+- `dtype=complex`: Sería la **mecánica cuántica**, los estado y operadores de manera frecuente usan números complejos. Dicha instrucción le avisa a python que reserve memoria para guardar números complejos (los cuales tienen parte real e imaginaria, tales como 0.+0.j), lo que hace que evite errores de formato o pérdida de datos.
+
+- `np.zeros_like(M, dtype=complex)`: Es una función util de `NumPy` la cual crea una matriz llena de ceros la cual tiene exactamente la misma forma y dimensiones que otra matriz de referencia (que en este caso, la matriz M del operador).
+  **Ejemplo:** Si $M$ es una matriz de $2 \times 2$, `np.zeros_like(M)` va a crear una matriz de $2 \times 2$ llena de ceros.
+
+
+### Ejercicio 14: valores medios
+El **valor medio** - también conocido como *media*, *valor esperado* o *esperanza* - de un observable $\mathcal{A}$ en un estado $|\psi\rangle$ está dado por:
+$$
+\begin{equation}
+\langle\hat{A}\rangle=\langle\psi|\hat{A}|\psi\rangle
+\end{equation}
+$$
+Obtén los valores esperados de los operadores de Pauli y la compuerta de Hadamard (ver los ejercicios 9 y 10) para los estados $|0\rangle$, $|1\rangle$, $|+\rangle$, $|-\rangle$, $|i\rangle$ y $|-i\rangle$.
