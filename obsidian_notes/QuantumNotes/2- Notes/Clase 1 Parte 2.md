@@ -88,6 +88,26 @@ Para el caso no degenerado, $\hat{P}_i=|\phi_i\rangle\langle\phi_i|$.
 
 Dicho en palabras (aunque para algunas personas pueda traer más confusión que esclarecimiento), el estado después de medir será la proyección ortogonal al subespacio asociado al autovalor que se midió, después de normalizarlo.
 
+# Evolución temporal
+## Operadores unitarios
+Un **operador unitario** $\hat{U}$ es un operador que cumple las ecuaciones $\hat{U}\hat{U}^\dagger=\hat{U}^\dagger\hat{U}=\hat{I}$, donde $\hat{I}$ es el *operador identidad*, que deja intacto al vector al que se lo aplica: $\hat{I}|\psi\rangle=|\psi\rangle$. Por lo tanto, si le aplicamos un operador unitario a un qubit y luego le aplicamos su operador adjunto (o viceversa), obtendremos el qubit original.
+
+## Evolución en el tiempo
+Los operadores unitarios nos sirven para describir la evolución temporal de los sistemas cuánticos. Supongamos que $|\psi\rangle$ es el ket de estado de un sistema cerrado en un tiempo $t_1$, y que $|\psi'\rangle$ es el ket de estado del sistema en el tiempo $t_2>t_1$. Podemos obtener $|\psi'\rangle$ a partir de cierta transformación unitaria $\hat{U}$:
+$$
+\begin{equation}
+|\psi'\rangle=\hat{U}|\psi\rangle
+\end{equation}
+$$
+<img src="images/schrodinger.jpg" align="right" width="150" />
+**Nota:** la transformación unitaria $\hat{U}$ relaciona el estado de un sistema cerrado en dos momentos específicos. Para saber cómo evoluciona un sistema cerrado en *tiempo continuo*, se utiliza la **ecuación de Schrödinger**:
+$$
+\begin{equation}
+i\hbar\frac{d|\psi\rangle}{dt}=\hat{H}|\psi\rangle
+\end{equation}
+$$
+donde $\hbar$ es la *constante de Planck reducida* y $\hat{H}$ es un operador hermítico conocido como el **Hamiltoniano** del sistema. Esta ecuación, desarrollada por el físico Erwin Schrödinger en 1925 (ver su imagen a la derecha), es una de las más importantes de la mecánica cuántica.
+
 
 
 

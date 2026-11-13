@@ -1,4 +1,4 @@
-Una base ortonormal se componen de dos propiedades sencillas:
+Una [[base ortonormal]] se componen de dos propiedades sencillas:
 - **Ortogonal:** Los vectores son perpendiculares entre sí, lo que significa que su producto interno es cero ($\langle u_i \vert{} u_j \rangle = 0$ cuando $i \neq j$).
 - **Normal:** Cada vector tiene una longitud (o norma) de 1 ($\langle u_i \vert{} u_i \rangle = 1$).
 

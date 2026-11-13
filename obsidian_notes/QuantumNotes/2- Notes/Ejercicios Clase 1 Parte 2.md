@@ -370,7 +370,6 @@ for name, A in ops.items():
 ### Ejercicio 15: midiendo qubits
 Aplica la compuerta de Hadamard, $\hat{H}$, al estado $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y muestra en la terminal el estado $|\psi_0'\rangle=\hat{H}|\psi_0\rangle$ (este estado ya está normalizado, por lo que es un qubit válido). Observa el cambio de probabilidades de obtener cada estado de la base computacional al medir $|\psi_0'\rangle$.
 
-
 #### Algo a tener en cuenta
 La compuerta de Hadamard ($\hat{H}$), según lo que investigué, es una operación cuántica que actúa sobre un qubit. Su función principal sería la de actuar como un puente que convierte estados definidos en superposiciones y viceversa.
 
@@ -391,4 +390,134 @@ print("Estas son las probabilidades antes de la aplicación de la compuerta {}",
 zeros_ones_H = zeros_ones.evolve(Operator.from_label("H"))
 print("Probabilidades nuevas: {}", zeros_ones_H.probabilities_dict())
 ```
+
+## Ejercicio 16: conservación de la norma
+Los operadores unitarios $\hat{U}$ preservan la norma de los kets; es decir, se cumple que $||\hat{U}|\psi\rangle||=|||\psi\rangle||$.
+
+Comprueba esta propiedad creando el operador unitario con la siguiente representación matricial (en la base computacional):
+$$
+\begin{equation}
+U_1=\frac{1}{\sqrt2}\begin{bmatrix} 1 & i \\ i & 1 \end{bmatrix}
+\end{equation}
+$$
+Luego, aplícalo al ket $|+\rangle$ y verifica que su norma siga siendo unitaria.
+
+#### Respuesta:
+**Algo para tener en cuenta es esto:** 
+- El **operador identidad** es la matriz con unos en la **diagonal** y ceros en el resto. Por ende al aplicarla a un vector pues este lo deja igual.
+- El adjunto $U^\dagger$ **es la transpuesta conjugada:** transpones la matriz y ademas conjugas cada número complejo (o sea cambia $i$ por $-i$). Con matrices reales coincide con la transpuesta, y con complejas pues no.
+
+La ecuación $\hat{U}^\dagger\hat{U}=\hat{I}$ dice que **$U^\dagger$ deshace lo que hizo $U$**. Aplicar $U$ y luego $U^\dagger$ a un qubit es:
+$$U^\dagger\big(U|\psi\rangle\big)=\big(U^\dagger U\big)|\psi\rangle=I|\psi\rangle=|\psi\rangle$$
+Primero se aplica $U$, después $U^\dagger$, y por la definición de unitario el producto de ambas es la identidad, que no cambia nada.
+
+**Resultado**
+```python
+#Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+M = np.array([[1, 1j],
+              [1j, 1]])
+
+molde = (1 / np.sqrt(2)) * M
+
+U1 = Operator(molde)
+
+if U1.is_unitary():
+    print("Es unitario")
+    plus_sv = Statevector.from_label("+")
+    evolved = plus_sv.evolve(U1)
+    # Ahora hay que calcular la norma!!!
+    resultado = np.linalg.norm(evolved.data)
+    print(resultado)
+    print("Amplitudes de evolved")
+    print(evolved)
+    print("Amplitudes de |+>")
+    print(plus_sv)
+else: 
+    print("No es unitario")
+```
+
+## Ejercicio 17: multiplicando operadores unitarios
+El producto de dos operadores unitarios da como resultado otro operador unitario.
+
+Comprueba esta propiedad creando el operador $\hat{U}_3=\hat{U}_1\cdot\hat{U}_2$, donde $\hat{U}_1$ es el operador del ejercicio anterior y $\hat{U}_2=\frac{\sqrt3}{2}|0\rangle\langle0|-\frac{1}{2}e^{-i\frac{\pi}{7}}|0\rangle\langle1|+\frac{1}{2}e^{i\frac{\pi}{5}}|1\rangle\langle0|+\frac{\sqrt3}{2}e^{i\left(\frac{\pi}{5}-\frac{\pi}{7}\right)}|1\rangle\langle1|$. Verifica que $\hat{U}_3^\dagger\hat{U}_3=\hat{I}$.
+
+```python
+#Escriba su solución aquí
+import numpy as np
+
+q2 = np.array([
+    [np.sqrt(3)/2, -1/2 * (np.exp(-1j * np.pi/7))],
+    [1/2 * (np.exp(1j * np.pi / 5)), np.sqrt(3)/2 * (np.exp(1j * ((np.pi / 5) - (np.pi / 7))))],
+])
+
+U2 = Operator(q2)
+print("U2 unitario: ", U2.is_unitary())
+
+U1 = Operator((1/np.sqrt(2)) * np.array([[1, 1j],
+                                         [1j, 1]]))
+
+U3 = U1.dot(U2)
+print("U3 unitario: ", U3.is_unitary())
+```
+
+Acá utilicé un concepto el cual no sabia y que me sirvió mucho para saber cómo realizar la matriz sin morir en el intento: [[suma de productos externos]]
+
+
+## Ejercicio 18: creando bases
+Dada una [[base ortonormal]] $\left\{|u_1\rangle,\ldots,|u_n\rangle\right\}$, podemos obtener otra base ortonormal  $\left\{|w_1\rangle,\ldots,|w_n\rangle\right\}$ multiplicando cada vector por un operador unitario: $|w_i\rangle=\hat{U}|u_i\rangle$.
+
+Obtén una base a partir la base computacional y el operador $\hat{U}_2$ del ejercicio anterior. Comprueba que la nueva base sea ortonormal.
+
+**Respuesta**
+```python
+#Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+q2 = np.array([
+    [np.sqrt(3)/2, -1/2 * (np.exp(-1j * np.pi/7))],
+    [1/2 * (np.exp(1j * np.pi / 5)), np.sqrt(3)/2 * (np.exp(1j * ((np.pi / 5) - (np.pi / 7))))],
+])
+
+U2 = Operator(q2)
+
+
+u0 = Statevector.from_label('0')
+u1 = Statevector.from_label('1')
+
+w0 = u0.evolve(U2)
+w1 = u1.evolve(U2)
+
+print(w0.inner(w0))
+print(w1.inner(w1))
+print(w0.inner(w1))
+print(w1.inner(w0))
+```
+
+**Lo que salió en pantalla:**
+```plaintext
+(0.9999999999999999+0j)
+(1+0j)
+(-6.938893903907228e-18-5.551115123125783e-17j)
+(-6.938893903907228e-18+5.551115123125783e-17j)
+```
+
+**Explicación del resultado:**
+- `(1+0j)` y `(0.9999999999999999+0j)` son un solo número complejo, con parte real y parte imaginaria. Vale 1; lo cual confirma que $\langle w_0 \vert w_0 \rangle$ = $\langle w_1 \vert w_1 \rangle = 1$: Los vectores son normales.
+- **`e-18` y `e-17`** significan $\times10^{-18}$ y $\times10^{-17}$. Entonces `-6.9e-18-5.5e-17j` es un número de parte real $\approx-0.000000000000000007$ y parte imaginaria $\approx-0.00000000000000006$. En la práctica, **cero**. Ese residuo es el redondeo del que hablamos. Esto confirma que los $|w_i\rangle$ son **ortogonales**.
+
+> [!Tip]
+> **Nota de color:**
+> Los dos productos cruzados son casi iguales y solo cambia el signo de la parte imaginaria. Eso es un conjugado completo, y es la propiedad que aparece en el ejercicio 4 (simetría conjugada):
+> $$
+> \large{\langle w_1|w_0\rangle=\langle w_0|w_1\rangle^*}
+> $$
+> > Si el producto interno fuera exactamente 0, pues no se notaría. Acá justamente se nota debido a que aparece el residuo.
+> 
+> **Conclusión del ejercicio 18**
+> **Los $|w_i\rangle=U_2|u_i\rangle$ forman una base ortonormal:** miden 1 y son ortogonales entre sí. Es lo que predice la teoría, porque $U_2$ es unitario y conserva los productos internos.
+
 
