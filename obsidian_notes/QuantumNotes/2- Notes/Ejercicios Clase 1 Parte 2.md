@@ -521,3 +521,186 @@ print(w1.inner(w0))
 > **Los $|w_i\rangle=U_2|u_i\rangle$ forman una base ortonormal:** miden 1 y son ortogonales entre sí. Es lo que predice la teoría, porque $U_2$ es unitario y conserva los productos internos.
 
 
+## Ejercicio 19
+Comprueba que los operadores $X$, $Y$, $Z$ y $H$ (ver ejercicios 9 y 10) son unitarios. Investiga sobre los operadores $S$ y $T$, observa el efecto que tienen sobre los estados de la base computacional y verifica que sean [[Operador unitario|operadores unitarios]].
+
+```python
+# Escriba su solución aquí
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+X = Operator.from_label("X")
+Y = Operator.from_label("Y")
+Z = Operator.from_label("Z")
+H = Operator.from_label("H")
+
+print("Es unitario X?: ", X.is_unitary())
+print("Es unitario Y?: ", Y.is_unitary())
+print("Es unitario Z?: ", Z.is_unitary())
+print("Es unitario H?: ", H.is_unitary())
+
+# Ahora me pide sobre investigar los operadores S y T
+S = Operator.from_label("S")
+T = Operator.from_label("T")
+
+# Existen y no me tira error, ahora apliquemoslos a la base computacional
+zero_sv = Statevector.from_label("0")
+one_sv = Statevector.from_label("1")
+
+# Aplicamos S
+zero_S = zero_sv.evolve(S)
+one_S = one_sv.evolve(S)
+
+# Aplicamos T
+zero_T = zero_sv.evolve(T)
+one_T = one_sv.evolve(T)
+
+# Para confirmar que son unitarios tenemos dos formas: Usar .is_unitary() dentro de los operadores. O ver que, tras aplicarle el adjunto al operador multiplico por el ket pues este mismo devuelva el ket original
+print("Comparación entre zero_sv y zero_S")
+print(f"zero_sv: {zero_sv}    \nzero_S: {zero_S}")
+
+print("\n")
+print("Comparación entre one_S y one_sv")
+print(f"one_sv: {one_sv}\n one_S: {one_S}")
+
+print("\n")
+
+print("Comparación entre zero_sv y zero_T")
+print(f"zero_sv: {zero_sv}    \nzero_S: {zero_T}")
+
+print("\n")
+print("Comparación entre one_sv y one_T")
+print(f"one_sv: {one_sv}\n one_S: {one_T}")
+```
+
+**Salida:**
+```shell
+Es unitario X?:  True
+Es unitario Y?:  True
+Es unitario Z?:  True
+Es unitario H?:  True
+Comparación entre zero_sv y zero_S
+zero_sv: Statevector([1.+0.j, 0.+0.j],
+            dims=(2,))    
+zero_S: Statevector([1.+0.j, 0.+0.j],
+            dims=(2,))
+
+
+Comparación entre one_S y one_sv
+one_sv: Statevector([0.+0.j, 1.+0.j],
+            dims=(2,))
+ one_S: Statevector([0.+0.j, 0.+1.j],
+            dims=(2,))
+
+
+Comparación entre zero_sv y zero_T
+zero_sv: Statevector([1.+0.j, 0.+0.j],
+            dims=(2,))    
+zero_S: Statevector([1.+0.j, 0.+0.j],
+            dims=(2,))
+
+
+Comparación entre one_sv y one_T
+one_sv: Statevector([0.+0.j, 1.+0.j],
+            dims=(2,))
+ one_S: Statevector([0.        +0.j        , 0.70710678+0.70710678j],
+            dims=(2,))
+```
+### Anotaciones importantes relacionadas a la salida
+**Cómo leer `0.+1.j` y `0.70710678+0.70710678j`**
+Cada uno es un sólo número complejo, con la forma de `parte_real + parte_imaginaria j` :
+
+- `0.+1.j` es $0+1\cdot i=i$.
+- `0.70710678+0.70710678j` es $0.7071+0.7071\,i$. No es gigante: cada parte es $\frac{1}{\sqrt2}$, un número que ya he viste varias veces.
+
+Un `Statevector` de un qubit imprime **dos** números complejos, uno por amplitud: primero la de $|0\rangle$ y después la de $|1\rangle$.
+
+**Lo que he visto, ordenado**
+- **Con $|0\rangle$:** tanto $S$ como $T$ lo dejan igual.
+- **Con $|1\rangle$:** la primera amplitud sigue en 0, como antes. Lo que cambió es la **segunda**: en $S$ pasó de $1$ a $i$, y en $T$ pasó de $1$ a $0.7071+0.7071i$.
+
+**En síntesis**
+- **No “separa” nada.** $S$ y $T$ multiplican la amplitud de $|1\rangle$ por un número complejo de módulo 1: $i$ para $S$ y $e^{i\pi/4}$ para $T$. La amplitud de $|0\rangle$ queda intacta. Ese número solo la gira en el plano complejo, sin cambiar su tamaño.
+- **La probabilidad** es el módulo al cuadrado de **la amplitud completa**: $a^2+b^2$ para $a+bi$. Dar 0.5 y 0.5 en cada parte y sumarlas da 1, y eso es lo que importa.
+
+
+### Ejercicio 20: fase global y relativa
+a. Crea los estados $|\psi_0\rangle=\frac{i}{\sqrt{3}}|0\rangle+\sqrt{\frac{2}{3}}|1\rangle$ y $|\psi_3\rangle=e^{i\frac{3\pi}{4}}|\psi_0\rangle$. Luego, aplica la compuerta de Hadamard a ambos estados y comprueba que las probabilidades de obtener $0$ ó $1$ al medir son las mismas para ambos qubits; es decir, son físicamente indistinguibles.
+
+```python
+#Escriba su código aquí para la parte a
+from qiskit.quantum_info import Statevector, Operator
+import numpy as np
+
+zero_sv = (1j / np.sqrt(3)) * Statevector.from_label("0")
+one_sv = (np.sqrt(2/3)) * Statevector.from_label("1")
+
+w0 = zero_sv + one_sv
+w3 = np.exp(1j * ((3 * np.pi) / 4)) * w0
+
+H = Operator.from_label("H")
+
+w0_H = w0.evolve(H)
+w3_H = w3.evolve(H)
+
+print("Probabilidades para w0")
+resultado = w0.probabilities_dict()
+print(resultado)
+print("Tras apicar Hadamard: ")
+print(w0_H.probabilities_dict())
+
+print("\n")
+
+print("Probabilidades para w3")
+resultado = w3.probabilities_dict()
+print(resultado)
+print("Tras apicar Hadamard: ")
+print(w3_H.probabilities_dict())
+```
+
+**Respuesta:**
+```shell
+Probabilidades para w0
+{np.str_('0'): np.float64(0.3333333333333334), np.str_('1'): np.float64(0.6666666666666666)}
+Tras apicar Hadamard: 
+{np.str_('0'): np.float64(0.4999999999999999), np.str_('1'): np.float64(0.4999999999999999)}
+
+
+Probabilidades para w3
+{np.str_('0'): np.float64(0.3333333333333334), np.str_('1'): np.float64(0.6666666666666666)}
+Tras apicar Hadamard: 
+{np.str_('0'): np.float64(0.5000000000000001), np.str_('1'): np.float64(0.5000000000000001)}
+```
+Las probabilidades `w0` y `w3` coinciden antes de $H$ ($1/3$ y $2/3$) y después de $H$ ($50/50$, salvo redondeo). Esto comprueba que los dos estados son físicamente indistinguibles. El `np.str_(...)` es solo cómo imprime esta versión de `numpy` las claves `'0'` y `'1'`. 
+
+**Por qué dio 50/50**
+En la esfera de Bloch, $H$ **intercambia el eje $x$ con el eje $z$** (y invierte $y$). el estado $|\psi_0\rangle$ tiene una amplitud imaginaria y otra real, o sea una fase relativa de $-90^\circ$, así que está en el lado del eje $y$ y su coordenada $x$ vale $0$. Después de $H$, la nueva coordenada $z$ es la vieja $x$, o sea $0$. Con $z=0$ el estado queda en el ecuador, que es 50/50.
+
+Fue una coincidencia de la fase que tiene ese estado en particular. Lo mismo vale para $|\psi_3\rangle$, porque la fase global no mueve el punto en la esfera.
+
+#### Inciso b
+b. Crea un nuevo estado a partir del qubit $|\psi_0\rangle$, agregándole una fase relativa de $45^\circ$ al estado $|1\rangle$ (esta fase puede expresarse como $e^{i\pi/4}$). Luego, aplica la compuerta de Hadamard a ambos estados y comprueba que las probabilidades de obtener $0$ ó $1$ al medir no son las mismas para ambos qubits.
+
+Ya encontré la confusión que tenia: El angulo no es algo extra que se agrega a una amplitud, sino que es una propiedad del propio número complejo.
+**Me explico:** Cada **número complejo ya tiene su ángulo**
+La amplitud $\beta=\sqrt{\frac23}$ es un número real positivo. En el plano complejo es una flecha que apunta hacia la derecha, así que su ángulo es $0^\circ$, sin que nadie se lo haya puesto. Al escribir el número, ya quedó fijado:
+
+|amplitud|ángulo|
+|---|---|
+|$\sqrt{\frac23}$ (real positivo)|$0^\circ$|
+|$i/\sqrt3$|$90^\circ$|
+|$-\sqrt{\frac23}$ (real negativo)|$180^\circ$|
+### Ejercicio 21
+```python
+#Escriba su código aquí
+
+plot_bloch_multivector(Statevector.from_label('+-rl01'), reverse_bits = True)
+```
+
+**Conexión con la teoría**
+- Los estados de los ejes $x$ e $y$ están sobre el **ecuador**, y por eso dan 50/50 al medir en la base computacional.
+- Los estados de los polos dan resultado seguro: 100% de medir 0 en el norte y 100% de medir 1 en el sur.
+- Los pares $|+\rangle,|-\rangle$ y $|i\rangle,|-i\rangle$ difieren solo en la **fase relativa**: $|+\rangle\to|-\rangle$ es un giro de $180^\circ$ alrededor del eje $z$, y $|+\rangle\to|i\rangle$ es un giro de $90^\circ$. Esa es la rotación que hace la compuerta $S$, que dejamos pendiente en el ejercicio 19.
+
+### Ejercicio 22: Operadores unitarios en la esfera de Bloch
+Aplica dos veces la compuerta de Hadamard al qubit $|0\rangle$ y observa su evolución temporal representando cada nuevo estado en la esfera de Bloch.

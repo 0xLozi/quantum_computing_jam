@@ -1,0 +1,1 @@
+**Fase global.** Es un número $e^{i\theta}$ que multiplica **todo** el estado, o sea que gira las dos amplitudes el mismo ángulo. Las probabilidades no cambian, porque dependen del módulo y el giro no lo toca. Dos estados que difieren solo por una fase global son físicamente el mismo estado, y por eso, si la podés sacar como factor común, la ignoras y no la escribís.
