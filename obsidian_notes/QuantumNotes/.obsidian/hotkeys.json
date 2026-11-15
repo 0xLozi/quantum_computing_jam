@@ -23,5 +23,13 @@
       ],
       "key": "M"
     }
+  ],
+  "editor:context-menu": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "O"
+    }
   ]
 }
