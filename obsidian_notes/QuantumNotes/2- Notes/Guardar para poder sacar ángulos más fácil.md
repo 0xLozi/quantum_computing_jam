@@ -68,3 +68,27 @@ En Qiskit las compuertas se ejecutan **en el orden en que las escribís de arrib
 1. Primero ponés la que te lleva a la inclinación deseada (`qc.ry(...)`).
 2. En la línea siguiente ponés el segundo movimiento (por ejemplo `qc.rz(...)` para rotarlo alrededor del ecuador, u otro `qc.ry(...)`).
 3. Recién **después** de poner todas las compuertas llamás a `Statevector.from_instruction(qc)` para sacar la foto final de cómo quedó la flecha.
+
+
+# Alternativa
+He creado una función para poder sacar el ángulo utilizando probabilidades
+
+```python
+def angulo_para_probabilidades(porcentaje, estado='0'):
+    prob = porcentaje / 100
+    if estado == '0':
+        return 2 * np.arccos(np.sqrt(prob))
+    else:
+        return 2 * np.arcsin(np.sqrt(prob))
+
+theta = angulo_para_probabilidades(14.6)               # Asume que es probabilidad de |0⟩
+theta = angulo_para_probabilidades(85.4, estado='1')   # Si el enunciado te da la de |1⟩
+```
+
+En donde con esto se puede sacar probabilidades y entonces aplicar la puerta `ry` sin problemas.
+
+
+
+
+
+

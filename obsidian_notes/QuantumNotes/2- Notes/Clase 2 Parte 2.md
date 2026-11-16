@@ -34,3 +34,29 @@ $$
     - Si la inclinas más allá del ecuador ($\theta = \frac{3\pi}{4}$, que son $135^\circ$, tres cuartos de camino hacia el Sur), la flecha queda bien abajo $\rightarrow$ por eso sale $85.4\%$ de veces $\vert{}1\rangle$ y solo $14.6\%$ de veces $\vert{}0\rangle$.
 
 [[Guardar para poder sacar ángulos más fácil]]
+[[Diferencias entre Qubit y Qubit Clásico]]
+
+
+# Ejercicio 10
+Para un algoritmo VQE (Variational Quantum Eigensolver) se uitliza el modo Session
+
+Motivo principal:
+- Dependencia entre pasos: En VQE, un optimizador clásico calcula un nuevo conjunto de parámetros basándose en el resultado de la ejecución cuántica anterior, y envía ese nuevo circuito a ejecutarse una y otra vez hasta converger.
+- Por qué session es el indicado: Abre una ventana dedicada en el procesador cuántico donde todos los trabajos consecutivos del bucle se ejecutan sin tener que volver a hacer fila en la cola global del sistema en cada iteración
+
+- Por qué no los otros:
+    - Job: Ejecutaría cada iteración como una tarea aislada, obligando a esperar en la cola pública en cada paso del bucle
+    - Batch: Sirve para enviar muchos circuitos independientes todos juntos de una sola vez (en paralelo), pero en VQE no conocés los ángulos de la iteración N + 1 hasta que no termina la iteración N
+
+# Ejercicio 11
+- **Sampler:** Lo que hace es ejecutar el circuito muchas veces (shots) y lo que hace es devolver la distribución de probabilidades (o conteos) de cada resultado binario medido (un ejemplo cuando antes al graficar habia salido `00` vs `01`, y veías la cantidad de veces que salió).
+
+- **Estimator:** Toma el circuito junto con un observable físico (un operador matemático, como un Hamiltoniano de energía) y calcula directamente su valor esperado promedio ($\langle \psi \vert{} \hat{H} \vert{} \psi \rangle$)), sin la necesidad de reconstruir las probabilidades manualmente.
+
+
+
+
+
+
+
+
