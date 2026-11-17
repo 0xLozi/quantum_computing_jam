@@ -57,6 +57,30 @@ Motivo principal:
 
 
 
+# Ejercicio 14
+En una computadora cuántica física, los qubits **son extremadamente frágiles**. Si un qubit queda esperando sin hacer nada (por ejemplo mientras otro qubit está ejecutando una operación lenta) **el entorno puede interferir y hacer que pierda su estado cuántico antes de tiempo.** Esa pérdida de información por el paso del tiempo se llama **decoherencia**. 
+
+Dentro del enunciado se presentan tres herramientas de **Qiskit** para combatir distintos tipos de errores:
+- **Readout Error Mitigation:** la cual limpia los fallos que ocurren únicamente en el instante final al medir el qubit; es decir, cuando leemos un 1 en vez de un 0, por ejemplo. 
+
+- **Dynamical Decoupling:** introduce pulsos de control rápidos durante los tiempos muertos de espera para mantener al qubit activo y protegerlo contra la pérdida de información del entorno. 
+
+- **Zero Noise Extrapolation:** el cual ejecuta el circuito varias veces amplificando el ruido a propósito para luego estimar matemáticamente cuál habría sido el resultado sin ruido. 
+
+
+**Respuesta al ejercicio:**
+La técnica más adecuada es el **dynamical decoupling** o **desacomplamiento dinámico**. Dicha técnica de supresión de errores inserta secuencias de pulsos de control como pares de compuertas X sobre los qubits durante sus tiempos de inactividad (es decir "idling") manteniendo su estado activo y cancelando la interferencia del entorno para evitar la decoherencia antes de que ocurra la medición. 
+
+
+# Ejercicio 16
+Una característica fundamental de lógica clásica incorporada en OpenQASM 3 —y ausente en OpenQASM 2— es el **flujo de control clásico** (_classical control flow_), que incluye estructuras **condicionales (`if / else`)** y **bucles o iteraciones (`for`, `while`)**. Esto permite evaluar resultados de mediciones clásicas en tiempo real (_feedforward_) para decidir qué compuertas cuánticas ejecutar o repetir dinámicamente durante la ejecución del circuito.
+
+
+# Ejercicio 18
+- **API REST (Interfaz de Programación de Aplicaciones REST):** Es un puente de comunicación basado en los protocolos estándar de la web (**HTTP/HTTPS**) que permite que dos sistemas escritos en distintos lenguajes intercambien datos (generalmente en formato JSON) mediante métodos como `POST` (para enviar tareas) y `GET` (para consultar resultados).
+- **Relación con el Ejercicio 18:** Como el SDK oficial de Qiskit está hecho para Python, un servidor en Node.js o Go no puede importarlo directamente; en su lugar, usa la `API REST` de Qiskit Runtime como intermediario para enviar circuitos cuánticos a la nube de IBM.
+- **Autenticación:** Para que IBM acepte esas peticiones HTTP y sepa a qué cuenta facturar o asignar los trabajos, cada solicitud debe incluir una credencial secreta única: tu API Token (o API Key).
+
 
 
 
