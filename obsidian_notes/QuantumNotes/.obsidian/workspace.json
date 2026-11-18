@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2- Notes/Clase 2 Parte 2.md",
+                "file": "Clase 3 Parte Extra.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Clase 2 Parte 2"
+              "title": "Clase 3 Parte Extra"
             }
           }
         ]
@@ -208,11 +208,13 @@
   },
   "active": "6c1f09a9c6e4c7f9",
   "lastOpenFiles": [
-    "2- Notes/Diferencias entre Qubit y Qubit Clásico.md",
+    "Clase 2 Parte 1.md",
+    "Clase 3 Parte Extra.md",
+    "2- Notes/autovectores.md",
     "2- Notes/Clase 2 Parte 2.md",
+    "2- Notes/Diferencias entre Qubit y Qubit Clásico.md",
     "2- Notes/Guardar para poder sacar ángulos más fácil.md",
     "1- Index/Quantum Computing.md",
-    "Clase 2 Parte 1.md",
     "2- Notes/Clase 2 Parte 1.md",
     "2- Notes/conjugado hermítico.md",
     "2- Notes/bra.md",
@@ -225,7 +227,6 @@
     "2- Notes/Fase Relativa.md",
     "2- Notes/Clase 1 Quantum.md",
     "2- Notes/base ortonormal.md",
-    "2- Notes/autovectores.md",
     "2- Notes/Resumen sistemas de medición.md",
     "2- Notes/Operaciones de Pauli resumen.md",
     "2- Notes/Resumen esfera de Bloch.md",
@@ -237,7 +238,6 @@
     "2- Notes/producto externo.md",
     "2- Notes/normalizado.md",
     "2- Notes/operadores unitarios.md",
-    "file:/home/snake/Downloads/Operador unitario.md",
     "1- Index",
     "2- Notes",
     "3- images/wolfgang-pauli.jpg",
